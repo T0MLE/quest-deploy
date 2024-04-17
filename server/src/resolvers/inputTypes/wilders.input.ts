@@ -7,4 +7,7 @@ export class WilderInput {
 
   @Field()
   city: String;
+
+  @Field()
+  gender: String;
 }

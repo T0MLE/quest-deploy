@@ -10,7 +10,7 @@ export class WilderResolver {
   }
 
   @Mutation(() => Wilder)
-  async addWilder(@Arg("wilder") { name, city }: WilderInput) {
-    return await WilderModel.create({ name, city });
+  async addWilder(@Arg("wilder") { name, city, gender }: WilderInput) {
+    return await WilderModel.create({ name, city, gender });
   }
 }

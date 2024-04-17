@@ -15,6 +15,7 @@ mutation AddWilderMutation($addWilderWilder: WilderInput!) {
 function AddWilder() {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
+  const [gender, setGender] = useState("")
 
   const [addWilder, { data, error }] = useMutation<{addWilder: WilderData}>(CREATE_WILDER);
   if (error) return <p>Error : {error.message}</p>;
@@ -27,7 +28,8 @@ function AddWilder() {
             variables: {
               addWilderWilder: {
                 name,
-                city
+                city,
+                gender
               }
             }
           }
@@ -50,6 +52,15 @@ function AddWilder() {
         placeholder="Type the city"
         value={city}
         onChange={(e) => setCity(e.target.value)}
+      />
+      <Button>Add</Button>
+      <Label htmlFor="city-input">Gender :</Label>
+      <Input
+        id="gender-input"
+        type="text"
+        placeholder="Type the city"
+        value={gender}
+        onChange={(e) => setGender(e.target.value)}
       />
       <Button>Add</Button>
     </Form>

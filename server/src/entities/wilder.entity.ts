@@ -13,6 +13,10 @@ export class Wilder {
   @Field()
   @prop()
   city: string;
+
+  @Field()
+  @prop()
+  gender: string;
 }
 
 export const WilderModel = getModelForClass(Wilder);
