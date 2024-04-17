@@ -6,6 +6,9 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: ["staging"]
+  pull_request:
+    branches: ["main"] # Also runs on pull requests to main
+    types: [closed] # Specifically when the pull request is closed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -14,6 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true || github.event_name == 'push'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -29,7 +33,7 @@ jobs:
           # generate some credentials from Dockerhub and store them into the repo secrets
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
+
       # prepare buildx for docker
       - uses: docker/setup-buildx-action@v1
         name: Set up Docker Buildx
