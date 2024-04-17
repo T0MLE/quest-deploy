@@ -22,7 +22,7 @@ export type WilderData = {
 }
 
 function App() {
-  
+
   const { loading, error, data } = useQuery<{wilders:WilderData[]}>(ALL_WILDERS);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
@@ -30,7 +30,7 @@ function App() {
     <div>
       <Header>
         <Container>
-          <h1>Wilders Book with CD</h1>
+          <h1>Wilders Book with CD Hello</h1>
         </Container>
       </Header>
       <Container>
